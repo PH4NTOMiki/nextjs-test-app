@@ -1,4 +1,4 @@
-import _ from '../lib/cachestore';
+import _ from '$lib/cachestore';
 import { useEffect } from 'react';
 import '../styles/globals.css';
 

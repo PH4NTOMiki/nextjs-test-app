@@ -1,9 +1,9 @@
-import _fetch from '../lib/_fetch';
+import _fetch from '$lib/_fetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
-import _ from '../lib/cachestore';
+import _ from '$lib/cachestore';
 import { NextPageContext } from 'next';
 
 /**

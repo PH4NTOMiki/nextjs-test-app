@@ -1,4 +1,4 @@
-import { connectToDB } from "../../lib/db";
+import { connectToDB } from "$lib/db";
 import { NextApiRequest, NextApiResponse } from 'next';
 
 /**
