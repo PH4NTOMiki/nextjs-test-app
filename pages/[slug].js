@@ -1,3 +1,4 @@
+import _fetch from '../lib/_fetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
@@ -39,6 +40,7 @@ function Post({_post, cache = false}) {
 			}
 		}
 		fetchPosts();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	
 	return (
@@ -68,7 +70,7 @@ Post.getInitialProps = async (ctx) => {
 		}
 	}
 	console.log('after check');
-	const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts?slug=${ctx.query.slug}`);
+	const data = await _fetch(ctx.req, `${process.env.NEXT_PUBLIC_URL}/api/posts?slug=${ctx.query.slug}`);
 	const {ok} = data;
 	if(ok){
 		const json = await data.json();

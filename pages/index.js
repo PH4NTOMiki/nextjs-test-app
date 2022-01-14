@@ -1,3 +1,4 @@
+import _fetch from '../lib/_fetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
@@ -40,6 +41,7 @@ function Home({_posts, cache = false}) {
 		/*return () => {
 			router.events.off('routeChangeStart', handleRouteChange);
 		};*/
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -62,7 +64,7 @@ Home.getInitialProps = async (ctx) => {
 	if(!ctx.req && _.posts.length){
 		return {_posts: [..._.posts], cache: true};
 	}
-	const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts?all=1`);
+	const data = await _fetch(ctx.req, `${process.env.NEXT_PUBLIC_URL}/api/posts?all=1`);
 	const {ok} = data;
 	if(ok){
 		const json = await data.json();
