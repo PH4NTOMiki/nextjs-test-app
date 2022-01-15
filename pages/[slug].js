@@ -17,7 +17,7 @@ function Post({_post, cache = false}) {
 	useEffect(() => {
 		async function fetchPosts(){
 			if(cache){
-				const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts?slug=${router.query.slug}`);
+				const data = await fetch(`/api/posts?slug=${router.query.slug}`);
 				const {ok} = data;
 				if(ok){
 					const json = await data.json();
@@ -29,7 +29,7 @@ function Post({_post, cache = false}) {
 				}
 			}
 			if(!_.posts.length){
-				const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts?all=1`);
+				const data = await fetch(`/api/posts?all=1`);
 				const {ok} = data;
 				if(ok){
 					const json = await data.json();

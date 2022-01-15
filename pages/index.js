@@ -26,7 +26,7 @@ function Home({_posts, cache = false}) {
 		
 		async function fetchPosts(){
 			if(cache){
-				const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts?all=1`);
+				const data = await fetch(`/api/posts?all=1`);
 				const {ok} = data;
 				if(ok){
 					const json = await data.json();
