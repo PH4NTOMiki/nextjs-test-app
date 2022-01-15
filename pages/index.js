@@ -64,7 +64,7 @@ Home.getInitialProps = async (ctx) => {
 	if(!ctx.req && _.posts.length){
 		return {_posts: [..._.posts], cache: true};
 	}
-	const data = await _fetch(ctx.req, `${process.env.NEXT_PUBLIC_URL}/api/posts?all=1`);
+	const data = await _fetch(ctx.req, `/api/posts?all=1`);
 	const {ok} = data;
 	if(ok){
 		const json = await data.json();

@@ -70,7 +70,7 @@ Post.getInitialProps = async (ctx) => {
 		}
 	}
 	console.log('after check');
-	const data = await _fetch(ctx.req, `${process.env.NEXT_PUBLIC_URL}/api/posts?slug=${ctx.query.slug}`);
+	const data = await _fetch(ctx.req, `/api/posts?slug=${ctx.query.slug}`);
 	const {ok} = data;
 	if(ok){
 		const json = await data.json();
