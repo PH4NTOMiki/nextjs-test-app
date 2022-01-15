@@ -70,7 +70,8 @@ Post.getInitialProps = async (ctx) => {
 		}
 	}
 	console.log('after check');
-	const data = await _fetch(ctx.req, `/api/posts?slug=${ctx.query.slug}`);
+	const handler = ctx.req && (await import('./api/posts')).default;
+	const data = await _fetch({req:ctx.req,handler}, `/api/posts?slug=${ctx.query.slug}`);
 	const {ok} = data;
 	if(ok){
 		const json = await data.json();

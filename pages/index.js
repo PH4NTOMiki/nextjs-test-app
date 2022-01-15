@@ -64,7 +64,8 @@ Home.getInitialProps = async (ctx) => {
 	if(!ctx.req && _.posts.length){
 		return {_posts: [..._.posts], cache: true};
 	}
-	const data = await _fetch(ctx.req, `/api/posts?all=1`);
+	const handler = ctx.req && (await import('./api/posts')).default;
+	const data = await _fetch({req:ctx.req,handler}, `/api/posts?all=1`);
 	const {ok} = data;
 	if(ok){
 		const json = await data.json();
