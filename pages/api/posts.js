@@ -8,7 +8,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
  */
 export default async function handler(req, res) {
 	console.log(new URL(req.url, `http://${req.headers.host}`).toString());
-	//console.log(req.headers);
+	console.log(JSON.stringify({headers:req.headers}));
 	const { all, slug } = req.query;
 	const { db } = await connectToDB();
 	if(all){
