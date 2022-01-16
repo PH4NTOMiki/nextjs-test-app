@@ -13,6 +13,7 @@ export default async function handler(req, res) {
 	//console.log(req);
 	//console.log(JSON.stringify({headers:req.headers}));
 	//if(req.headers['x-serverrequest']){return res.json({"_id":"6177d2eccc757e9744ec5996","slug":"article5","title":"Article 5","txt":""});}
+	//console.log(req.headers);
 	const { all, slug } = req.query;
 	const { db } = await connectToDB();
 	if(all){

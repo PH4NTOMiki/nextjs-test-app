@@ -12,7 +12,7 @@ const nextConfig = {
         resourceRegExp: /api\//
       }));
       config.plugins.push(new webpack.IgnorePlugin({
-        resourceRegExp: /^http$/
+        resourceRegExp: /^https?$/
       }));
     }
     return config;
