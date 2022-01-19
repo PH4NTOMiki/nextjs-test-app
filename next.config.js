@@ -6,7 +6,6 @@ const webpack = require('webpack');
  */
 const nextConfig = {
 	reactStrictMode: true,
-	outputFileTracing: false,
 	"webpack": (config, { isServer, dev }) => {
 		if(!isServer){
 			config.plugins.push(new webpack.IgnorePlugin({
