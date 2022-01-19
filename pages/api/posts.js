@@ -1,10 +1,9 @@
 import { connectToDB } from "$lib/db";
-import { NextApiRequest, NextApiResponse } from 'next';
 
 /**
  * 
- * @param {NextApiRequest} req 
- * @param {NextApiResponse} res 
+ * @param {import('next').NextApiRequest} req 
+ * @param {import('next').NextApiResponse} res 
  */
 export default async function handler(req, res) {
 	//console.log({method: req.method, url: req.url, headers: req.headers, cookies: req.cookies, query: req.query, body: req.body});
