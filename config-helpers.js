@@ -19,7 +19,7 @@ const path = require('path');
 // link: https://unpkg.com/regexparam@2.0.0/dist/index.mjs
 function parse(str, loose) {
 	if (str instanceof RegExp) return { keys:false, pattern:str };
-	str = str.replaceAll(new RegExp('\\]\\]', 'g'), '?').replaceAll(new RegExp('\\]', 'g'), '').replaceAll(new RegExp('\\[\\[\\.\\.\\.', 'g'), '*').replaceAll(new RegExp('\\[\\.\\.\\.', 'g'), '*').replaceAll(new RegExp('\\[', 'g'), ':');
+	str = str.replace(new RegExp('\\]\\]', 'g'), '?').replace(new RegExp('\\]', 'g'), '').replace(new RegExp('\\[\\[\\.\\.\\.', 'g'), '*').replace(new RegExp('\\[\\.\\.\\.', 'g'), '*').replace(new RegExp('\\[', 'g'), ':');
 	var c, o, tmp, ext, keys=[], pattern='', arr = str.split('/');
 	arr[0] || arr.shift();
 
