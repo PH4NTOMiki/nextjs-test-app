@@ -9,13 +9,7 @@ const nextConfig = {
 	"webpack": (config, { isServer, dev }) => {
 		if(!isServer){
 			config.plugins.push(new webpack.IgnorePlugin({
-				resourceRegExp: /api\//
-			}));
-			config.plugins.push(new webpack.IgnorePlugin({
-				resourceRegExp: /^https?$/
-			}));
-			config.plugins.push(new webpack.IgnorePlugin({
-				resourceRegExp: /(lib)?\/?_fetch_server/
+				resourceRegExp: /fetch_server/
 			}));
 		} else {
 			const apiMap = {};
