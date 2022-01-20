@@ -48,7 +48,13 @@ function parse(str, loose) {
 	};
 }
 
-function exec(path, result) {
+/**
+ * 
+ * @param {string} path 
+ * @param {{pattern: RegExp, keys: string[]}} result 
+ * @returns 
+ */
+ function exec(path, result) {
 	let i=0, out={};
 	let matches = result.pattern.exec(path);
 	while (i < result.keys.length) {

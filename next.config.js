@@ -12,12 +12,12 @@ const nextConfig = {
 				resourceRegExp: /fetch_server/
 			}));
 		} else {
-			const apiMap = {};
-			const apiList = walkSync('./pages/api').filter(f => f.endsWith('.js')).map(f => f.replace('pages/api','').replace('.js', '')).reverse().filter(e => {return e.includes('[')&&e.includes(']')?(apiMap[e] = parse(e), false) : true;});
+			const apiMap = [];
+			const apiList = walkSync('./pages/api').filter(f => f.endsWith('.js')).map(f => f.replace('pages/api','').replace('.js', '')).reverse().filter(e => {return e.includes('[')&&e.includes(']')?(apiMap.push([e, parse(e)]), false) : true;});
 			console.log({apiMap:devalue(apiMap), apiList})
 			config.plugins.push(new webpack.DefinePlugin({
 				'process.env.API_LIST': JSON.stringify(apiList),
-				'process.env.API_LIST_JSON': devalue(apiMap)
+				'process.env.API_MAP': devalue(apiMap)
 			}));
 		}
 		return config;
