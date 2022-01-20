@@ -6,7 +6,7 @@ const path = require('path');
  * @param {string} dir 
  * @param {string[]} [filelist] 
  */
- const walkSync = (dir, filelist = []) => {
+function walkSync(dir, filelist = []) {
 	fs.readdirSync(dir).forEach(file => {
 		filelist = fs.statSync(path.join(dir, file)).isDirectory()
 		? walkSync(path.join(dir, file), filelist)
@@ -54,7 +54,7 @@ function parse(str, loose) {
  * @param {{pattern: RegExp, keys: string[]}} result 
  * @returns 
  */
- function exec(path, result) {
+function exec(path, result) {
 	let i=0, out={};
 	let matches = result.pattern.exec(path);
 	while (i < result.keys.length) {

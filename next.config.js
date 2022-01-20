@@ -13,9 +13,10 @@ const nextConfig = {
 			}));
 		} else {
 			const apiMap = [];
-			const apiList = walkSync('./pages/api').filter(f => f.endsWith('.js')).map(f => f.replace('pages/api','').replace('.js', '')).reverse().filter(e => {return e.includes('[')&&e.includes(']')?(apiMap.push([e, parse(e)]), false) : true;});
+			const apiList = walkSync('./pages/api').filter(f => f.endsWith('.js')).map(f => f.split('pages/api')[1].replace('.js', '')).reverse().filter(e => {return e.includes('[')&&e.includes(']')?(apiMap.push([e, parse(e)]), false) : true;});
 			console.log({apiMap:devalue(apiMap), apiList})
 			config.plugins.push(new webpack.DefinePlugin({
+				'process.env.API_DEV': JSON.stringify(dev),
 				'process.env.API_LIST': JSON.stringify(apiList),
 				'process.env.API_MAP': devalue(apiMap)
 			}));
